@@ -128,7 +128,7 @@ public class LevelGenerator : MonoBehaviour
 			{
 				AddUnoccupiedVertex(tile.x - 1, tile.y, edge);
 			}
-			else if (tile.x != boardSizeX - 1)
+			else if (edge == SquareEdge.Right && tile.x != boardSizeX - 1)
 			{
 				AddUnoccupiedVertex(tile.x + 1, tile.y, edge);
 			}
