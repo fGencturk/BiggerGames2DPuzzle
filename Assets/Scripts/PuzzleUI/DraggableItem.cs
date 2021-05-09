@@ -32,6 +32,6 @@ public class DraggableItem : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
 
 	public void OnDrag(PointerEventData eventData)
 	{
-		rectTransform.anchoredPosition += eventData.delta / GameManager.instance.rootCanvas.scaleFactor;
+		rectTransform.anchoredPosition += eventData.delta / (GameManager.instance.rootCanvas.scaleFactor * transform.parent.localScale);
 	}
 }

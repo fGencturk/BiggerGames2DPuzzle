@@ -52,7 +52,11 @@ public class SquareBoardPiece
 
 	public bool IsOccupied(SquareVertex side)
 	{
-		return sideOccupied.ContainsKey(side) && sideOccupied[side];
+		if(!sideOccupied.ContainsKey(side))
+		{
+			return true;
+		}
+		return sideOccupied[side];
 	}
 
 	public SquareVertex GetTriangleCenterPointOfEdge(SquareEdge edge)
