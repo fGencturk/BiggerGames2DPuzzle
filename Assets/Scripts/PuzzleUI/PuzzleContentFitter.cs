@@ -11,11 +11,9 @@ public class PuzzleContentFitter : MonoBehaviour
         puzzlePiecesRectTransform;
     RectTransform rectTransform;
 
-    void Start()
+    void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-
-        FitPuzzleContent(GameManager.instance.boardSizeX, GameManager.instance.boardSizeY, GameManager.instance.triangleSpriteSize);
     }
 
     public void FitPuzzleContent(int boardSizeX, int boardSizeY, float triangleSpriteSize)

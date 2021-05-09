@@ -11,6 +11,9 @@ public class PuzzleBoard : MonoBehaviour, IDropHandler
     private SquareBoardPiece[,] board;
     private float triangleSpriteSize;
 
+    public delegate void OnLevelCompleteDelegate();
+    public event OnLevelCompleteDelegate OnLevelComplete = () => { };
+
     Dictionary<int, PlacedPuzzlePieceWidget> placedPuzzlePieceWidgets;
 
 	public void Initialize()
@@ -75,8 +78,8 @@ public class PuzzleBoard : MonoBehaviour, IDropHandler
 	{
         if(placedPuzzlePieceWidgets.Count == puzzlePieceCount)
 		{
-            Debug.Log("Level Completed");
-		}
+            OnLevelComplete();
+        }
     }
 
 	public void RemovePlacedPuzzlePiece(int id)
