@@ -54,12 +54,19 @@ public class LevelGenerator : MonoBehaviour
 
 				foreach (Tile tile in shuffledTiles)
 				{
+					if(tile.completed)
+					{
+						continue;
+					}
 					Tile selectedRandomNeighbor = GetRandomUnoccupiedNeighbor(tile);
 					if (selectedRandomNeighbor != null)
 					{
 						puzzlePieces[i].tiles.Add(selectedRandomNeighbor);
 						puzzlePieces[i].completed = false;
 						completed = false;
+					} else
+					{
+						tile.completed = true;
 					}
 				}
 			}

@@ -3,6 +3,7 @@ public class Tile
 {
 	public int x, y;
 	public SquareVertex triangleCenterPoint;
+	[System.NonSerialized] public bool completed;
 
 	public Tile(int x, int y, SquareVertex triangleCenterPoint)
 	{
