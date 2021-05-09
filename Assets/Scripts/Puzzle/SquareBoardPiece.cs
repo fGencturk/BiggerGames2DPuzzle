@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class SquareBoardPiece
 {
@@ -10,6 +11,11 @@ public class SquareBoardPiece
 	{
 		this.x = x;
 		this.y = y;
+		SetTriangleCenterPoint(triangleCenterPoint);
+	}
+
+	public void SetTriangleCenterPoint(SquareVertex triangleCenterPoint)
+	{
 		this.triangleCenterPoint = triangleCenterPoint;
 		sideOccupied = new Dictionary<SquareVertex, bool>();
 		sideOccupied[triangleCenterPoint] = false;
@@ -29,14 +35,24 @@ public class SquareBoardPiece
 		return sides;
 	}
 
-	public void SetOccupied(SquareVertex side)
+	public void SetOccupied(SquareVertex side, bool value)
 	{
-		sideOccupied[side] = true;
+		if(sideOccupied.ContainsKey(side)) {
+			sideOccupied[side] = value;
+		} else
+		{
+			Debug.LogError("Given SquareVertex does not exist in dict!");
+		}
+	}
+
+	public bool isEmpty()
+	{
+		return GetUnoccupiedSquareVertexes().Count == 2;
 	}
 
 	public bool IsOccupied(SquareVertex side)
 	{
-		return sideOccupied[side];
+		return sideOccupied.ContainsKey(side) && sideOccupied[side];
 	}
 
 	public SquareVertex GetTriangleCenterPointOfEdge(SquareEdge edge)

@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3437503208817598042}
   - component: {fileID: -7712803643089106364}
-  - component: {fileID: 2083631228485321807}
+  - component: {fileID: -7893914177876299886}
+  - component: {fileID: -2396858099996007030}
   m_Layer: 5
   m_Name: PuzzlePieceContainer
   m_TagString: Untagged
@@ -51,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triangleWidget: {fileID: 9025323990008788581, guid: 3b9ff38859c58b74b850f30c539d1dce,
     type: 3}
---- !u!114 &2083631228485321807
+--- !u!114 &-7893914177876299886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -60,6 +61,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 3470979285188268075}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee556a7d6e377594385abf0026f67b62, type: 3}
+  m_Script: {fileID: 11500000, guid: c5fa5653364db8242acf1f5c72964ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &-2396858099996007030
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3470979285188268075}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

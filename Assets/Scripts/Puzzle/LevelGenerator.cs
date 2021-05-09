@@ -5,16 +5,17 @@ using System.Linq;
 
 public class LevelGenerator : MonoBehaviour
 {
-	[SerializeField]
-	private int boardSizeX = 4,
-		boardSizeY = 4,
-		puzzlePieceCount = 4;
-
 	private SquareBoardPiece[,] board;
 	private PuzzlePiece[] puzzlePieces;
 
+	private int boardSizeY, boardSizeX, puzzlePieceCount;
+
 	public PuzzlePiece[] GenerateBoard()
 	{
+		GameManager gameManager = GameManager.instance;
+		boardSizeY = gameManager.boardSizeY;
+		boardSizeX = gameManager.boardSizeX;
+		puzzlePieceCount = gameManager.puzzlePieceCount;
 		// Initialize squares with random triangle sides
 		board = new SquareBoardPiece[boardSizeY, boardSizeX];
 		for (int y = 0; y < boardSizeY; y++)
@@ -64,16 +65,6 @@ public class LevelGenerator : MonoBehaviour
 			}
 		}
 
-		// Print
-		for (int i = 0; i < puzzlePieceCount; i++)
-		{
-			Debug.Log("-------------TILE-------------------");
-			foreach (var item in puzzlePieces[i].tiles)
-			{
-				Debug.Log(item.y + " " + item.x + " " + item.triangleCenterPoint);
-			}
-		}
-
 		return puzzlePieces;
 	}
 
@@ -88,7 +79,7 @@ public class LevelGenerator : MonoBehaviour
 			return GetRandomInitialTile();
 		}
 		SquareVertex side = PickRandomElementOfList(sides);
-		board[y, x].SetOccupied(side);
+		board[y, x].SetOccupied(side, true);
 		return new Tile(x, y, side);
 	}
 
@@ -139,7 +130,7 @@ public class LevelGenerator : MonoBehaviour
 			return null;
 		}
 		Tile neighbor = PickRandomElementOfList(unoccupiedNeighbors);
-		board[neighbor.y, neighbor.x].SetOccupied(neighbor.triangleCenterPoint);
+		board[neighbor.y, neighbor.x].SetOccupied(neighbor.triangleCenterPoint, true);
 		return neighbor;
 	}
 
