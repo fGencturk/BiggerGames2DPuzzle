@@ -5,17 +5,17 @@ using System.Linq;
 
 public class LevelGenerator : MonoBehaviour
 {
+	[SerializeField] private bool logJson;
 	private SquareBoardPiece[,] board;
 	private PuzzlePiece[] puzzlePieces;
 
 	private int boardSizeY, boardSizeX, puzzlePieceCount;
 
-	public PuzzlePiece[] GenerateBoard()
+	public PuzzlePiece[] GenerateBoard(int boardSizeX, int boardSizeY, int puzzlePieceCount)
 	{
-		GameManager gameManager = GameManager.instance;
-		boardSizeY = gameManager.boardSizeY;
-		boardSizeX = gameManager.boardSizeX;
-		puzzlePieceCount = gameManager.puzzlePieceCount;
+		this.boardSizeX = boardSizeX;
+		this.boardSizeY = boardSizeY;
+		this.puzzlePieceCount = puzzlePieceCount;
 		// Initialize squares with random triangle sides
 		board = new SquareBoardPiece[boardSizeY, boardSizeX];
 		for (int y = 0; y < boardSizeY; y++)
@@ -64,8 +64,24 @@ public class LevelGenerator : MonoBehaviour
 				}
 			}
 		}
-
+		if(logJson)
+		{
+			PrintJsonFormat(puzzlePieces);
+		}
 		return puzzlePieces;
+	}
+
+	private void PrintJsonFormat(PuzzlePiece[] puzzlePieces)
+	{
+		// JsonUtility CANNOT serialize array, but CAN serialize List object.
+		// So, converting array to list
+		LevelData levelData = new LevelData()
+		{
+			boardSizeX = boardSizeX,
+			boardSizeY = boardSizeY,
+			puzzlePieces = this.puzzlePieces.ToList()
+		};
+		Debug.Log(JsonUtility.ToJson(levelData));
 	}
 
 	Tile GetRandomInitialTile()
@@ -149,5 +165,13 @@ public class LevelGenerator : MonoBehaviour
 	{
 		int index = Random.Range(0, list.Count);
 		return list[index];
+	}
+
+	[System.Serializable]
+	class LevelData
+	{
+		public int boardSizeX;
+		public int boardSizeY;
+		public List<PuzzlePiece> puzzlePieces;
 	}
 }

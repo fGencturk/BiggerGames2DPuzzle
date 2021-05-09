@@ -4,8 +4,8 @@ public enum SquareVertex
 {
 	TopLeft,
 	TopRight,
-	BottomLeft,
-	BottomRight
+	BottomRight, 
+	BottomLeft
 }
 
 static class SquareVertexMethods

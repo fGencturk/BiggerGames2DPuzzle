@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-
+[System.Serializable]
 public class PuzzlePiece
 {
 	public List<Tile> tiles;
-	public bool completed;
+	[System.NonSerialized] public bool completed;
 
 	public PuzzlePiece()
 	{

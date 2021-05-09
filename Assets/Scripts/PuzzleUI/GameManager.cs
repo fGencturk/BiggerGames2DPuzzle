@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
 	public void LoadNewLevel()
 	{
 		ClearPuzzlePieces();
-		PuzzlePiece[] puzzlePieces = levelGenerator.GenerateBoard();
+		PuzzlePiece[] puzzlePieces = levelGenerator.GenerateBoard(boardSizeX, boardSizeY, puzzlePieceCount);
 		puzzleBoard.Initialize();
 		for (int i = 0; i < puzzlePieces.Length; i++)
 		{

@@ -1,4 +1,5 @@
-﻿public class Tile
+﻿[System.Serializable]
+public class Tile
 {
 	public int x, y;
 	public SquareVertex triangleCenterPoint;
