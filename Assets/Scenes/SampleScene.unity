@@ -1727,12 +1727,12 @@ MonoBehaviour:
     boardSizeY: 4
     puzzlePieceCount: 5
   mediumParameters:
-    boardSizeX: 7
-    boardSizeY: 7
+    boardSizeX: 5
+    boardSizeY: 5
     puzzlePieceCount: 7
   hardParameters:
-    boardSizeX: 10
-    boardSizeY: 10
+    boardSizeX: 6
+    boardSizeY: 6
     puzzlePieceCount: 10
   boardSizeX: 5
   boardSizeY: 5
